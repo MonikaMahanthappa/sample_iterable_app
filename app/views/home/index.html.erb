@@ -1,4 +1,21 @@
-<h1>Hello</h1>
-<%= button_to 'Event A', events_path({event: {name: 'A'}}) %>
-<br>
-<%= button_to 'Event B', events_path({event: {name: 'B'}}) %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<% if user_signed_in? %>
+  <h1>Welcome, <%= current_user.email %></h1>
+  <div>
+    <%= button_to 'Event A', events_path({event: {name: 'A'}}) %>
+    <br>
+    <%= button_to 'Event B', events_path({event: {name: 'B'}}) %>
+    <br>
+  </div>
+
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<%end %>
+
+<% unless user_signed_in? %>
+  <h1>Welcome to Sample App</h1>
+  <%=  link_to 'Sign in', new_user_session_path  %>
+<% end %>
+
+
