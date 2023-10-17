@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
-    event = Event.create(event_params)
+    event = Event.create(event_params.merge(user: current_user))
     render json: event, status: 201
   end
 
