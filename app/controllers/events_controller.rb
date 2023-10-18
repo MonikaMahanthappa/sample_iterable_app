@@ -2,9 +2,8 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    event = Event.create(event_params.merge(user: current_user))
     iterable_api = IterableApi.new(ENV["iterable_api_key"], "#{ENV['iterable_api_base_url']}/api")
-    iterable_api.track_web_push_click(current_user, event)
+    event = EventService.new(iterable_api).create(current_user, event_params)
     render json: event, status: 201
   end
 
