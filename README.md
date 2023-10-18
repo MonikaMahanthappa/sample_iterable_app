@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To start the application
 
-Things you may want to cover:
+*Requirements*
+- Ruby version 3.1.3
+- Rails version 7.1.0
 
-* Ruby version
+1. **Set Environment Variable:**
 
-* System dependencies
+   Open your terminal and set the environment variable using the `export` command. Replace `"YOUR_API_KEY"` with your actual API key:
 
-* Configuration
+   ```bash
+   export iterable_api_key="YOUR_API_KEY"
+   export iterable_api_base_url="YOUR_API_BASE_URL"
 
-* Database creation
+2. **Install all dependencies**
 
-* Database initialization
+   ```bash
+   bundle install
 
-* How to run the test suite
+3. **Run migrations**
+   ```bash
+   rails db:migrate
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+5. **Start server**
+    ```bash
+   rails server
